@@ -1,3 +1,114 @@
-Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
+git init - To initialize a folder, right click the folder and click "git bash here" and then in the git console write -[ git init ] to initialize the the folder.
 
-In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 
+git status - to view current status of the directory. e.g. view unversioned file.
+
+git add - to add the unversioned file (e.g. readme.txt), write git add readme.txt. Now write git status to find the file status which is ready to be commited.
+This is called staging. we stage the readme.txt file for commit.
+
+modify the file (readme.txt) and use git status to find the status. you have to use git add readme.txt again for the new change to be staged for commit.
+
+use git commit to commit the changes.
+( might ask for username) - follow the command
+
+in the new window, press i to enter a message. enter initial commit as message. once finish entering message, press ESC key to get out of the insert mode. 
+At the bottom of the screen, write :wq and hit enter to commit the changes.
+
+Now the change the readme.txt file again by adding some text. now add the file by [ git add readme.txt ] command.
+now check in using [ git commit -m 'one more change in the file' ]commmand
+
+[ git log ] to view the log history.
+
+add a new file. now use [ git add . ] to add / stage everything.
+
+or you can use like [git add *.html] to add all files with specific extension.
+
+how to exclude some files - [ .gitignore ] file is used to ignore files. in git bash windows write [ touch .gitignore ] to create the file.
+open the .gitignore file in notepad and add [ *.log ] in the file to exclude the files having extension .log .
+
+use [ git add . ] to stage everything.
+
+not commit by writing [ git commit -m 'add ignore file' ] to commit changes.
+
+Branch - to create a branch use [ git branch MyBranch ]
+then use [ git checkout Mybranch ] to checkout the branch.
+
+Now create a new file by writing [ touch index.css] in the branch.
+Now change the file readme.txt by adding some text and use [ git add . ] to stage (add) everything.
+Now commit the changes [ git commit -m 'new updates' ]
+
+Move to main branch - [ git checkout master ]  Note: master is always the main branch.
+Note: if you look at the folder, you will see the index.css file missing from he folder. if you checkout the branch MyBranch, you will see the file again in the folder.
+
+Merge: to merge the changes, you have to be in the destination branch. in this case, it is the master branch.
+To Merge:
+[ git checkout master ]
+[git merge MyBranch]
+
+Merge conflict:
+modify readme.txt file by adding some text.
+you can commit directly by using this [ git commit -a -m 'change 4' ]  Note: use [ -a ] to skip the staging file. [ -a ] will automatically stage the file.
+
+now move the the branch and modify the readme.txt file by adding some text.
+[ git checkout MyBranch ]
+also, commit the changes [ git commit -a -m 'change 5' ]
+
+now merge master into the branch.
+[ git merge master ]
+
+Merge conflict appears.
+to resolve the conflict, open the file and modify the file manually.
+Now use [ git commit -a -m 'merge from master' ]
+
+you can use a merge tool to merge. like tortoise merge or winmerge.
+
+[git mergetool ]
+
+-----------------------------
+[ touch newfile.txt ]
+new file created. dont stage the file. move to master.
+
+[ git checkout master ]
+
+still the file exist.
+
+now move to the branch [ git checkout mybranch ]
+now add the file [ git add . ]
+[ git status ]
+
+now use [ git stash ] to save the current directory status for this branch.
+now use [ git status ] and it will show no more pending chnages.
+
+to get the change back use [ git stash apply ]
+
+-----------------------------
+
+to view existing remote repo use [ git remote ]
+
+go to github / bitbucket and get (copy) the clone url.
+
+now write [ git clone https://alfesullah@bitbucket.org/alfesullah/rhinomocksample.git ]
+now write [ cd rhinomocksample ]
+
+[ git remote ]
+
+ use [ git remote -v ] to view the url of the remote repo.
+ 
+ [ git fetch origin ] will get any changes committed to server. update repo.
+ Note: it does not merge.
+ 
+ 
+ [ git pull origin ] will automatically fetch and merge changes into your branch.
+
+now add a file into the new branch pulled.
+
+use [ git add . ] to add the file.
+[git commit -a -m 'add new file'] to stage the file.
+now use [ git push origin master ] to push the change to remote repo.
+
+ ---------------
+ 
+ to add a remote repo,  use [ git remote add MyRepo https://alfesullah@bitbucket.org/alfesullah/mytestrepo.git ]
+ use [ git remote ] to view the remote repos.
+ 
+ to view the remote repos url, use [ git remote -v ]
+
